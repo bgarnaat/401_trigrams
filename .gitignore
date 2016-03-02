@@ -68,3 +68,6 @@ include/
 pip-selfcheck.json
 share/
 
+.Python
+.cache/
+
