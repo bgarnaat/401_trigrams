@@ -3,7 +3,8 @@
 import pytest
 
 
-text = "egtidfjgiojfigjerg"
+text = "az"
+text_with_punct = "a.,/-z"
 
 
 def test_read_file():
@@ -12,8 +13,8 @@ def test_read_file():
     assert len(read_file()) > 0
 
 
-@pytest.mark.parametrize('text', text)
-def test_strip_punct(text):
+@pytest.mark.parametrize('text', 'text_res', text_with_punct, text)
+def test_strip_punct(text, text_res):
     """Docstring."""
-    # from trigrams import strip_punct()
-    assert text.isalpha()
+    from trigrams import strip_punct
+    assert strip_punct(text) == text_res
