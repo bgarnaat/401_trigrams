@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Generate random story using trigrams."""
 import io
+import string
 
 
 def read_file():
@@ -13,7 +14,11 @@ def read_file():
 
 def strip_punct(text):
     """Do stuff."""
-    # strip punct from text
+    # strip punct from
+    # print(type(text))
+    for c in string.punctuation:
+        text.replace(c, ' ')
 
 
-read_file()
+text = read_file()
+strip_punct(text)
