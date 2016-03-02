@@ -8,7 +8,7 @@ def read_file():
     """Open and read file input."""
     f = io.open('sherlock_small.txt', 'r')
     lines = ''.join(f.readlines())
-    print(lines)
+    # print(lines)
     return lines
 
 
@@ -17,8 +17,9 @@ def strip_punct(text):
     # strip punct from
     # print(type(text))
     for c in string.punctuation:
-        text.replace(c, ' ')
+        text = text.replace(c, ' ')
+    return text
 
 
 text = read_file()
-strip_punct(text)
+print(strip_punct(text))
