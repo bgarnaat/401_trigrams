@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import pytest
+"""Trigram tests."""
+# import pytest
 
 
 def test_read_file():
@@ -7,3 +8,8 @@ def test_read_file():
     from trigrams import read_file
     assert len(read_file()) > 0
 
+
+def test_strip_punct(text):
+    """Docstring."""
+    from trigrams import strip_punct
+    assert 
