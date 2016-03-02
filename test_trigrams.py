@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Trigram tests."""
 import pytest
+import string
 
 
 text = "egtidfjgiojfigjerg"
@@ -15,5 +16,4 @@ def test_read_file():
 @pytest.mark.parametrize('text', text)
 def test_strip_punct(text):
     """Docstring."""
-    # from trigrams import strip_punct()
     assert text.isalpha()
