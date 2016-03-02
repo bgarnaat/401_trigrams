@@ -3,10 +3,9 @@ import io
 
 def read_file():
     f = io.open('sherlock_small.txt', 'r')
-    print(f.name)
-
-    # for line in f:
-    #     print(line)
+    lines = f.readlines()
+    print(lines)
+    return lines
 
 read_file()
 
