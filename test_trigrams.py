@@ -6,7 +6,15 @@ text = "az"
 text_with_punct = "a.,/-z"
 
 text_w_space = "this is some text to test"
-text_list = ['zero', 'one', 'two', 'zero', 'one', 'three', 'four', 'five']
+text_list = ['zero', 'one', 'two', 'zero', 'one', 'three', 'four']
+
+text_dict = {
+    ('zero', 'one'): ['two', 'three'],
+    ('one', 'two'): ['zero'],
+    ('two', 'zero'): ['one'],
+    ('one', 'three'): ['four']
+    }
+n = 4
 
 
 def test_read_file():
@@ -22,18 +30,24 @@ def test_strip_punct():
 
 
 def test_create_list():
-    """Assert list is created on space"""
+    """Assert list is created on space."""
     from trigrams import create_list
     assert '' not in create_list(text_w_space)
 
 
 def test_create_dict():
-    """Assert dictionary is created with tuple keys"""
+    """Assert dictionary is created with tuple keys."""
     from trigrams import create_dict
     assert len(create_dict(text_list).keys())
 
 
 def test_repeat():
-    """find if there are any dict items with multiple list values"""
+    """Assert that there are dict items with multiple list values."""
     from trigrams import create_dict
     assert len(create_dict(text_list)[('zero', 'one')]) > 1
+
+
+def test_story():
+    """Assert that a single string is returned."""
+    from trigrams import make_a_damn_story
+    assert type(make_a_damn_story(text_dict, n)) == 'str'
