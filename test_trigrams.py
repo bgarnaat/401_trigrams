@@ -32,7 +32,8 @@ def test_create_dict():
     from trigrams import create_dict
     assert len(create_dict(text_list).keys())
 
+
 def test_repeat():
     """find if there are any dict items with multiple list values"""
     from trigrams import create_dict
-    
+    assert len(create_dict(text_list)[('zero', 'one')]) > 1
