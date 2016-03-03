@@ -12,7 +12,8 @@ text_dict = {
     ('zero', 'one'): ['two', 'three'],
     ('one', 'two'): ['zero'],
     ('two', 'zero'): ['one'],
-    ('one', 'three'): ['four']
+    ('one', 'three'): ['four'],
+    ('three', 'four'): ['']
     }
 n = 4
 
@@ -47,7 +48,13 @@ def test_repeat():
     assert len(create_dict(text_list)[('zero', 'one')]) > 1
 
 
+def test_story_list():
+    """Assert something."""
+    from trigrams import make_a_damn_story_list
+    assert len(make_a_damn_story_list(text_dict)) > 2
+
+
 def test_story():
     """Assert that a single string is returned."""
     from trigrams import make_a_damn_story
-    assert type(make_a_damn_story(text_dict, n)) == 'str'
+    assert isinstance(make_a_damn_story(text_list), str)
