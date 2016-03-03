@@ -65,6 +65,6 @@ def make_a_damn_story(text):
 text = read_file()
 text = create_list(text)
 text = create_dict(text)
-text = make_a_damn_story_list(text)
+text = make_a_damn_story_list(text, 200)
 text = make_a_damn_story(text)
 print(text)
