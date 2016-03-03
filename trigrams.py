@@ -3,14 +3,16 @@
 import io
 import random
 import string
+import sys
 
 
-def read_file():
+def read_file(file):
     """Open and read file input."""
-    f = io.open('sherlock_small.txt', 'r')
+    f = io.open(file, 'r')
     lines = ''.join(f.readlines())
     lines = lines.replace('--', ' ')
     lines = lines.replace('\n', ' ')
+    f.close()
     return lines
 
 
@@ -50,25 +52,21 @@ def make_a_damn_story(text):
             break
         key = story_list[-2], story_list[-1]
     print(story_list)
-    # story = {}
 
 
-# creat empty list.
-# assign value i and i + 1 as values equal to tuples in keys
-# append i+2 as value at key.
-
-# append i+3 as value of key made by i+1 and i+2
-# etc
-
-# smash story list into a string
 
 
-text = read_file()
-text = strip_punct(text)
-text = create_list(text)
-text = create_dict(text)
-make_a_damn_story(text)
-# print(text)
+
+def main(file, n):
+    text = read_file('sherlock_small.txt')
+    text = strip_punct(text)
+    text = create_list(text)
+    text = create_dict(text)
 
 
-# io.close
+
+if __name__ == '__main__':
+    main(sys.argv[1], sys.argv[2])
+
+
+
