@@ -9,7 +9,6 @@ def read_file():
     f = io.open('sherlock_small.txt', 'r')
     lines = ''.join(f.readlines())
     lines = lines.replace('--', ' ')
-    print(lines)
     return lines
 
 
@@ -20,8 +19,15 @@ def strip_punct(text):
     return text
 
 
-# def make_dict()
+def create_list(text):
+    text = text.split(' ')
+    return text
+
+
+# def create_dict():
+    #
 
 
 text = read_file()
-print(strip_punct(text))
+text = strip_punct(text)
+text = create_list(text)
