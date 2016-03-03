@@ -9,7 +9,7 @@ def read_file():
     f = io.open('sherlock_small.txt', 'r')
     lines = ''.join(f.readlines())
     lines = lines.replace('--', ' ')
-    lines = lines.replace('\n', '')
+    lines = lines.replace('\n', ' ')
     return lines
 
 
@@ -30,7 +30,8 @@ def create_dict(text):
     """Return dictionary from list"""
     word_dict = {}
     for i in range(0, len(text) - 2):
-        word_dict[(text[i], text[i + 1])] = text[i + 2]
+        dict_key = (text[i], text[i + 1])
+        word_dict.setdefault(dict_key, []).append(text[i + 2])
     return word_dict
 
 
@@ -39,3 +40,6 @@ text = strip_punct(text)
 text = create_list(text)
 text = create_dict(text)
 print(text)
+
+
+# io.close
