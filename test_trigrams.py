@@ -6,7 +6,7 @@ text = "az"
 text_with_punct = "a.,/-z"
 
 text_w_space = "this is some text to test"
-text_list = ['zero', 'one', 'two', 'three', 'four', 'five']
+text_list = ['zero', 'one', 'two', 'zero', 'one', 'three', 'four', 'five']
 
 
 def test_read_file():
@@ -31,3 +31,8 @@ def test_create_dict():
     """Assert dictionary is created with tuple keys"""
     from trigrams import create_dict
     assert len(create_dict(text_list).keys())
+
+def test_repeat():
+    """find if there are any dict items with multiple list values"""
+    from trigrams import create_dict
+    
