@@ -24,6 +24,9 @@ def strip_punct(text):
 def create_list(text):
     """Return list of words."""
     text = text.split(' ')
+    # print(text)
+    # text.pop()
+    # print(text)
     return text
 
 
@@ -33,42 +36,34 @@ def create_dict(text):
     for i in range(0, len(text) - 2):
         dict_key = (text[i], text[i + 1])
         word_dict.setdefault(dict_key, []).append(text[i + 2])
+        # if text[i + 2] != '':
     return word_dict
 
 
-def make_a_damn_story(text):
-    """Make a damn story."""
+def make_a_damn_story_list(text):
+    """Make a damn story list."""
     primer = random.choice(list(text.keys()))
     story_list = []
     story_list.append(primer[0])
     story_list.append(primer[1])
-    print(story_list)
     key = (story_list[0], story_list[1])
     while text[key]:
         story_list.append(random.choice(text[key]))
         if story_list[-1] == '':
             break
         key = story_list[-2], story_list[-1]
-    print(story_list)
-    # story = {}
+    return story_list
 
 
-# creat empty list.
-# assign value i and i + 1 as values equal to tuples in keys
-# append i+2 as value at key.
-
-# append i+3 as value of key made by i+1 and i+2
-# etc
-
-# smash story list into a string
+def make_a_damn_story(text):
+    """Make a damn story."""
+    story = ' '.join(text)
+    return story
 
 
 text = read_file()
-text = strip_punct(text)
 text = create_list(text)
 text = create_dict(text)
-make_a_damn_story(text)
-# print(text)
-
-
-# io.close
+text = make_a_damn_story_list(text)
+text = make_a_damn_story(text)
+print(text)
