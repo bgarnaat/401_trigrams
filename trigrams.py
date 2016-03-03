@@ -40,7 +40,7 @@ def create_dict(text):
     return word_dict
 
 
-def make_a_damn_story_list(text):
+def make_a_damn_story_list(text, n):
     """Make a damn story list."""
     primer = random.choice(list(text.keys()))
     story_list = []
@@ -52,6 +52,7 @@ def make_a_damn_story_list(text):
         if story_list[-1] == '':
             break
         key = story_list[-2], story_list[-1]
+    story_list = story_list[:(n - 1)]
     return story_list
 
 
