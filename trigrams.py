@@ -54,7 +54,7 @@ def make_a_damn_story_list(text, n):
         if story_list[-1] == '':
             break
         key = story_list[-2], story_list[-1]
-    story_list = story_list[:int(n) -2]
+    story_list = story_list[:int(n) - 2]
     return story_list
 
 
@@ -65,6 +65,7 @@ def make_a_damn_story(text):
 
 
 def main(file, n):
+    """Main module."""
     text = read_file('sherlock_small.txt')
     text = create_list(text)
     text = create_dict(text)
@@ -72,9 +73,5 @@ def main(file, n):
     text = make_a_damn_story(text)
 
 
-
-
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2])
-
-
