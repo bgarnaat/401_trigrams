@@ -9,6 +9,7 @@ def read_file():
     f = io.open('sherlock_small.txt', 'r')
     lines = ''.join(f.readlines())
     lines = lines.replace('--', ' ')
+    lines = lines.replace('\n', '')
     return lines
 
 
@@ -31,3 +32,4 @@ def create_list(text):
 text = read_file()
 text = strip_punct(text)
 text = create_list(text)
+print(text)
