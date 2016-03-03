@@ -21,11 +21,13 @@ def strip_punct(text):
 
 
 def create_list(text):
+    """Return list of words."""
     text = text.split(' ')
     return text
 
 
 def create_dict(text):
+    """Return dictionary from list"""
     word_dict = {}
     for i in range(0, len(text) - 2):
         word_dict[(text[i], text[i + 1])] = text[i + 2]

@@ -6,7 +6,7 @@ text = "az"
 text_with_punct = "a.,/-z"
 
 text_w_space = "this is some text to test"
-text_to_list = []
+text_list = ['zero', 'one', 'two', 'three', 'four', 'five']
 
 
 def test_read_file():
@@ -25,3 +25,9 @@ def test_create_list():
     """Assert list is created on space"""
     from trigrams import create_list
     assert '' not in create_list(text_w_space)
+
+
+def test_create_dict():
+    """Assert dictionary is created with tuple keys"""
+    from trigrams import create_dict
+    assert len(create_dict(text_list).keys())
