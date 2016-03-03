@@ -3,14 +3,16 @@
 import io
 import random
 import string
+import sys
 
 
-def read_file():
+def read_file(file):
     """Open and read file input."""
-    f = io.open('sherlock_small.txt', 'r')
+    f = io.open(file, 'r')
     lines = ''.join(f.readlines())
     lines = lines.replace('--', ' ')
     lines = lines.replace('\n', ' ')
+    f.close()
     return lines
 
 
@@ -40,7 +42,7 @@ def create_dict(text):
     return word_dict
 
 
-def make_a_damn_story_list(text):
+def make_a_damn_story_list(text, n):
     """Make a damn story list."""
     primer = random.choice(list(text.keys()))
     story_list = []
@@ -52,6 +54,7 @@ def make_a_damn_story_list(text):
         if story_list[-1] == '':
             break
         key = story_list[-2], story_list[-1]
+    story_list = story_list[:int(n) -2]
     return story_list
 
 
@@ -61,9 +64,17 @@ def make_a_damn_story(text):
     return story
 
 
-text = read_file()
-text = create_list(text)
-text = create_dict(text)
-text = make_a_damn_story_list(text)
-text = make_a_damn_story(text)
-print(text)
+def main(file, n):
+    text = read_file('sherlock_small.txt')
+    text = create_list(text)
+    text = create_dict(text)
+    text = make_a_damn_story_list(text, n)
+    text = make_a_damn_story(text)
+
+
+
+
+if __name__ == '__main__':
+    main(sys.argv[1], sys.argv[2])
+
+
