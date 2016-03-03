@@ -28,7 +28,7 @@ def create_list(text):
 
 
 def create_dict(text):
-    """Return dictionary from list"""
+    """Return dictionary from list."""
     word_dict = {}
     for i in range(0, len(text) - 2):
         dict_key = (text[i], text[i + 1])
@@ -36,12 +36,18 @@ def create_dict(text):
     return word_dict
 
 
-def make_a_damn_story(text, n):
+def make_a_damn_story(text):
     """Make a damn story."""
     primer = random.choice(list(text.keys()))
-    story = '{} {}'.format(primer[0], primer[1])
-    for i in range(0, n - 2):
-        pass
+    story_list = []
+    story_list.append(primer[0])
+    story_list.append(primer[1])
+    print(story_list)
+    while text(story_list[-2], (story_list[-1])):
+        key = (story_list[-2], story_list[-1])
+        story_list.append(text[key])
+    print(story_list)
+    # story = {}
 
 
 # creat empty list.
@@ -58,7 +64,8 @@ text = read_file()
 text = strip_punct(text)
 text = create_list(text)
 text = create_dict(text)
-print(text)
+make_a_damn_story(text, 200)
+# print(text)
 
 
 # io.close
