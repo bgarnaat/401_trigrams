@@ -43,9 +43,12 @@ def make_a_damn_story(text):
     story_list.append(primer[0])
     story_list.append(primer[1])
     print(story_list)
-    while text(story_list[-2], (story_list[-1])):
-        key = (story_list[-2], story_list[-1])
-        story_list.append(text[key])
+    key = (story_list[0], story_list[1])
+    while text[key]:
+        story_list.append(random.choice(text[key]))
+        if story_list[-1] == '':
+            break
+        key = story_list[-2], story_list[-1]
     print(story_list)
     # story = {}
 
@@ -64,7 +67,7 @@ text = read_file()
 text = strip_punct(text)
 text = create_list(text)
 text = create_dict(text)
-make_a_damn_story(text, 200)
+make_a_damn_story(text)
 # print(text)
 
 
