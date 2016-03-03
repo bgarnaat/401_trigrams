@@ -4,8 +4,6 @@ import io
 import string
 
 
-
-
 def read_file():
     """Open and read file input."""
     f = io.open('sherlock_small.txt', 'r')
@@ -30,7 +28,7 @@ def create_list(text):
 def create_dict(text):
     word_dict = {}
     for i in range(0, len(text) - 2):
-        word_dict[(text[i], text[i + 1]): text[i + 2]]
+        word_dict[(text[i], text[i + 1])] = text[i + 2]
     return word_dict
 
 
