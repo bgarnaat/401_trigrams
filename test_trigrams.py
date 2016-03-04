@@ -2,8 +2,8 @@
 """Trigram tests."""
 
 
-text = "az"
-text_with_punct = "a.,/-z"
+text = "a  z"
+text_with_punct = "a\n--z"
 
 text_w_space = "this is some text to test"
 text_list = ['zero', 'one', 'two', 'zero', 'one', 'three', 'four']
@@ -16,12 +16,6 @@ text_dict = {
     ('three', 'four'): ['']
     }
 n = 4
-
-
-def test_read_file():
-    """Assert the file imported and was split into lines."""
-    from trigrams import read_file
-    assert len(read_file()) > 0
 
 
 def test_strip_punct():
