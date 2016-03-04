@@ -46,7 +46,7 @@ def make_a_damn_story_list(text, n):
     story_list = []
     story_list.append(primer[0])
     story_list.append(primer[1])
-    key = (story_list[0], story_list[1])
+    key = (story_list[:2])
     while text[key]:
         story_list.append(random.choice(text[key]))
         if story_list[-1] == '':
@@ -64,6 +64,7 @@ def make_a_damn_story_list(text, n):
 def make_a_damn_story(text):
     """Make a damn story."""
     story = ' '.join(text)
+    print(story)
     return story
 
 
@@ -74,14 +75,15 @@ def write_a_damn_story(text, file):
     file_out.close()
 
 
-def main(file_in, n, file_out):
+def main(file_in, n):
     """Main module."""
     text = read_file(file_in)
     text = create_list(text)
     text = create_dict(text)
     text = make_a_damn_story_list(text, n)
     text = make_a_damn_story(text)
+    # write_a_damn_story(text, sys.argv[3])
 
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], int(sys.argv[2]))
