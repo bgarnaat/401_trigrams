@@ -51,7 +51,7 @@ def test_repeat():
 def test_story_list():
     """Assert something."""
     from trigrams import make_a_damn_story_list
-    assert len(make_a_damn_story_list(text_dict)) > 2
+    assert len(make_a_damn_story_list(text_dict, 5)) > 2
 
 
 def test_story():
