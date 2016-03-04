@@ -43,10 +43,9 @@ def create_dict(text):
 def make_a_damn_story_list(text, n):
     """Make a damn story list."""
     primer = random.choice(list(text.keys()))
-    story_list = []
-    story_list.append(primer[0])
-    story_list.append(primer[1])
-    key = (story_list[:2])
+    story_list = list(primer)
+    key = (story_list[0], story_list[1])
+    # key = tuple(story_list)
     while text[key]:
         story_list.append(random.choice(text[key]))
         if story_list[-1] == '':
