@@ -9,16 +9,13 @@ def read_file(file):
     """Open and read file input."""
     f = io.open(file, 'r', encoding='utf-8')
     lines = ''.join(f.readlines())
-    lines = lines.replace('--', ' ')
-    lines = lines.replace('\n', ' ')
     f.close()
     return lines
 
 
 def strip_punct(text):
     """Return string without punctuation."""
-    for c in string.punctuation:
-        text = text.replace(c, '')
+    text = text.replace('--', ' ').replace('\n', ' ')
     return text
 
 
@@ -70,6 +67,7 @@ def write_a_damn_story(text, file):
 def main(file_in, n):
     """Main module."""
     text = read_file(file_in)
+    text = strip_punct(text)
     text = create_list(text)
     text = create_dict(text)
     text = make_a_damn_story_list(text, n)
