@@ -54,14 +54,6 @@ def make_a_damn_story(text):
     """Make a damn story."""
     story = ' '.join(text)
     print(story)
-    return story
-
-
-def write_a_damn_story(text, file):
-    """Write a damn story."""
-    file_out = open(file, 'w')
-    file_out.write(text)
-    file_out.close()
 
 
 def main(file_in, n):
