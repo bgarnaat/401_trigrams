@@ -1,54 +1,64 @@
 # -*- coding: utf-8 -*-
-"""Trigram tests."""
+"""Shut the hell up docstring."""
 
 
-text = "a  z"
-text_with_punct = "a\n--z"
-
-text_w_space = "this is some text to test"
-text_list = ['zero', 'one', 'two', 'zero', 'one', 'three', 'four']
+text = 'this is some--text--to test. This is some other text'
+text_cleaned = 'this is some text to test. This is some other text'
+text_list = [
+            'this', 'is', 'some', 'text', 'to', 'test.',
+            'This', 'is', 'some', 'other', 'text',
+            ]
 
 text_dict = {
-    ('zero', 'one'): ['two', 'three'],
-    ('one', 'two'): ['zero'],
-    ('two', 'zero'): ['one'],
-    ('one', 'three'): ['four'],
-    ('three', 'four'): ['']
-    }
-n = 4
+    ('this', 'is'): ['some'],
+    ('is', 'some'): ['text', 'other'],
+    ('some', 'text'): ['to'],
+    ('text', 'to'): ['test.'],
+    ('to', 'test.'): ['This'],
+    ('test.', 'This'): ['is'],
+    ('This', 'is'): ['some'],
+    ('some', 'other'): ['text'],
+}
+
+story_list = [
+            'this', 'is', 'some', 'text', 'to', 'test.',
+            'This', 'is', 'some', 'other', 'text',
+            ]
+
+n = 25
 
 
-def test_strip_punct():
-    """Assert no punctuation exists in the text."""
-    from trigrams import strip_punct
-    assert strip_punct(text_with_punct) == text
+def test_strip_d_hyphen():
+    """Assert double hyphen is removed."""
+    from trigrams_new import strip_d_hyphen
+    assert strip_d_hyphen(text) == text_cleaned
 
 
 def test_create_list():
-    """Assert list is created on space."""
-    from trigrams import create_list
-    assert '' not in create_list(text_w_space)
+    """Assert text string is converted to list of strings."""
+    from trigrams_new import create_list
+    assert create_list(text_cleaned) == text_list
 
 
 def test_create_dict():
-    """Assert dictionary is created with tuple keys."""
-    from trigrams import create_dict
-    assert len(create_dict(text_list).keys())
+    """Assert dictionary of trigrams is created with tuple keys."""
+    from trigrams_new import create_dict
+    assert create_dict(text_list) == text_dict
 
 
-def test_repeat():
-    """Assert that there are dict items with multiple list values."""
-    from trigrams import create_dict
-    assert len(create_dict(text_list)[('zero', 'one')]) > 1
+def test_seed_story():
+    """Assert random story seed is generated."""
+    from trigrams_new import seed_story
+    assert len(seed_story(text_dict)) == 2
 
 
-def test_story_list():
-    """Assert something."""
-    from trigrams import make_a_damn_story_list
-    assert len(make_a_damn_story_list(text_dict, 5)) > 2
+def test_create_story_list():
+    """Assert a story is returned as a list of strings."""
+    from trigrams_new import create_story_list
+    assert len(create_story_list(text_dict, n)) == n
 
 
-def test_story():
-    """Assert that a single string is returned."""
-    from trigrams import make_a_damn_story
-    assert isinstance(make_a_damn_story(text_list), str)
+def test_create_story():
+    """Assert a string is returned (for testing)."""
+    from trigrams_new import create_story
+    assert isinstance(create_story(story_list), str)
