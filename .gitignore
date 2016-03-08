@@ -72,3 +72,4 @@ share/
 
 .Python
 .cache/
+requirements.pip

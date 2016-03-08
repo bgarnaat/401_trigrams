@@ -9,7 +9,7 @@ def read_file(file):
     """Open and read file input."""
     f = io.open(file, 'r', encoding='utf-8')
     text = f.read()
-    f.close
+    f.close()
     return text
 
 
