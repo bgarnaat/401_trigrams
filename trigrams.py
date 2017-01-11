@@ -15,56 +15,41 @@ def read_file(file):
 
 def strip_d_hyphen(text):
     """Return string without double hyphens.  Keep other punctuation."""
-    text = text.replace('--', ' ')
-    return text
+    return text.replace('--', ' ')
 
 
 def create_list(text):
     """Create and return a list of the words present in story."""
-    text_list = text.split()
-    return text_list
+    return text.split()
 
 
 def create_dict(text_list):
     """Create and return a dict of trigrams present in story."""
     text_dict = {}
-    for i in range(0, len(text_list) - 2):
-        dict_key = tuple(text_list[i:i + 2])
-        dict_value = text_list[i + 2]
-        text_dict.setdefault(dict_key, []).append(dict_value)
+    {text_dict.setdefault(tuple(text_list[i:i + 2]), []).append(text_list[i + 2]) for i in range(0, len(text_list) - 2)}
     return text_dict
 
 
 def create_story_list(text_dict, n):
     """Create and return a story as a list."""
     story_list = list(seed_story(text_dict))
-    # print(list(text_dict.keys)
-    # for i in range(0, n - 2):
     while len(story_list) < n:
         dict_key = (story_list[-2], story_list[-1])
-        if dict_key in text_dict.keys():
+        try:
             story_list.append(random.choice(text_dict[dict_key]))
-        else:
-            story_seed = seed_story(text_dict)
-            if len(story_list) < n - 1:
-                story_list.append(story_seed[0])
-                story_list.append(story_seed[1])
-            else:
-                story_list.append(story_seed[0])
-    return story_list
+        except KeyError:
+            story_list.extend(seed_story(text_dict))
+    return story_list[:n]
 
 
 def seed_story(text_dict):
     """Generate random seed for story."""
-    story_seed = random.choice(list(text_dict.keys()))
-    return story_seed
+    return random.choice(list(text_dict.keys()))
 
 
 def create_story(story_list):
     """Create string of text from story_list."""
-    story = ' '.join(story_list)
-    print(story)
-    return(story)  # NOTE: this return is for function test
+    return ' '.join(story_list)
 
 
 def main(file, n):
@@ -74,7 +59,8 @@ def main(file, n):
     text_list = create_list(text)
     text_dict = create_dict(text_list)
     story_list = create_story_list(text_dict, n)
-    create_story(story_list)
+    story = create_story(story_list)
+    print(story)
 
 
 if __name__ == '__main__':
